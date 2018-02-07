@@ -1,0 +1,63 @@
+:host {
+  .mat-card {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  background-color: white;
+}
+.date-pickers {
+  display: flex;
+  flex-direction: column;
+}
+
+.datepickerrange__msg {
+  min-height: 1.1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.datepickerrange__buttons {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.dateText{
+  display: none;
+}
+
+.date-picker {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 700px) {
+  :host {
+    .mat-card {
+      flex-direction: row;
+      .controls {
+        justify-content: space-between;
+        order: 0;
+      }
+      .date-pickers {
+        flex-direction: row;
+        order: 1;
+      }   
+      .control {
+        max-width: 11em;
+      }
+    }
+  }
+  .dateText{
+    display: block;
+  }
+  .datepickerrange__msg {
+    text-align: left;
+  }
+}

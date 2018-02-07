@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  public rangeEnd = new Date();
+  public rangeEnd = new Date('2018-02-07T20:52:04.044Z');
+  public rangeStart = new Date('2018-02-07T20:52:04.044Z');
   public startDate = new Date();
   public endDate = new Date();
   public isOpen = false;

@@ -1,0 +1,45 @@
+
+<mat-card>
+  <div class="date-pickers">
+    <div class="date-picker">
+      <span class="datepickerrange__header"> Start Date </span>
+      <ang-datepicker 
+            [(date)]="startDate" 
+            (onSelect)="onSelectStartDate($event)" 
+            [dateFormat]="dateFormat" 
+            [rangeStart]="rangeStart"
+            [rangeEnd]="rangeEnd"
+            [endDate]="endDate" 
+            [startDate]="startDate">
+      </ang-datepicker>
+    </div>
+    <div class="date-picker">
+      <span class="datepickerrange__header"> End Date </span>
+      <ang-datepicker 
+            [(date)]="endDate" 
+            (onSelect)="onSelectEndDate($event)" 
+            [dateFormat]="dateFormat" 
+            [rangeStart]="rangeStart"
+            [rangeEnd]="rangeEnd"
+            [endDate]="endDate" 
+            [startDate]="startDate">
+      </ang-datepicker>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="dateText">
+      <h3> Start Date </h3>
+      <p>{{ startDateText }}</p>
+      <h3> End Date </h3>
+      <p>{{ endDateText }}</p>
+    </div>
+    <div class="datepickerrange__msg"> {{ msg }} </div>
+    <div class="datepickerrange__buttons">
+      <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
+      </button>
+      <button mat-button (click)="onCloseContextualMenu()">Cancel
+      </button>
+    </div>
+  </div>
+</mat-card>
+
