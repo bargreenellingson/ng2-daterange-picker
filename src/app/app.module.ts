@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DaterangePickerModule } from './daterange-picker/daterange.picker.module';
-
+import { MatInputModule, MatCardModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    DaterangePickerModule
+    DaterangePickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
