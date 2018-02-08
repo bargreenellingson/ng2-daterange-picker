@@ -2,23 +2,48 @@
 
   <div class="datepicker__calendar">
     <div class="datepicker__calendar__nav">
-      <div class="datepicker__calendar__nav__arrow" [hidden]="disableLeftYear" (click)="onYearArrowClick('left')">
+      <div class="datepicker__calendar__nav__arrow" 
+        [ngClass]="{ 'datepicker__calendar__nav__arrow--disabled': disableLeftYear }"
+        (click)="onYearArrowClick('left')">
+        <svg
+           viewBox="0 0 50 50"
+           y="0px"
+           x="0px"
+           class="datepicker__calendar__nav__chevron"
+           >
+          <g
+             transform="translate(-6.1440678,0)"
+             id="g4280">
+            <path
+               id="path4282"
+               d="m 39.7,7.1 c 0.5,0.5 0.5,1.2 0,1.7 L 29,19.6 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 16.5,32.1 c -0.5,0.5 -1.2,0.5 -1.7,0 L 12.5,29.8 C 12,29.3 11.3,28.6 10.8,28.1 L 8.5,25.8 C 8,25.3 8,24.6 8.5,24.1 L 19.3,13.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 L 31.7,0.8 c 0.5,-0.5 1.2,-0.5 1.7,0 l 2.3,2.3 c 0.5,0.5 1.2,1.2 1.7,1.7 l 2.3,2.3 z" />
+          </g>
+          <g
+             transform="translate(-6.1440678,0)"
+             id="g4284">
+            <path
+               id="path4286"
+               d="m 33.4,49 c -0.5,0.5 -1.2,0.5 -1.7,0 L 20.9,38.2 C 20.4,37.7 19.7,37 19.2,36.5 L 8.4,25.7 C 7.9,25.2 7.9,24.5 8.4,24 l 2.3,-2.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 l 2.3,-2.3 c 0.5,-0.5 1.2,-0.5 1.7,0 l 10.8,10.8 c 0.5,0.5 1.2,1.2 1.7,1.7 L 39.7,41 c 0.5,0.5 0.5,1.2 0,1.7 L 37.4,45 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 33.4,49 Z" />
+          </g>
+          <g
+             id="g4834"
+             transform="matrix(0.68269917,0,0,0.68269917,20.131085,8.112655)">
+            <path
+               d="m 39.7,7.1 c 0.5,0.5 0.5,1.2 0,1.7 L 29,19.6 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 16.5,32.1 c -0.5,0.5 -1.2,0.5 -1.7,0 L 12.5,29.8 C 12,29.3 11.3,28.6 10.8,28.1 L 8.5,25.8 C 8,25.3 8,24.6 8.5,24.1 L 19.3,13.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 L 31.7,0.8 c 0.5,-0.5 1.2,-0.5 1.7,0 l 2.3,2.3 c 0.5,0.5 1.2,1.2 1.7,1.7 l 2.3,2.3 z"
+               id="path4836" />
+          </g>
+          <g
+             id="g4838"
+             transform="matrix(0.68269917,0,0,0.68269917,20.131085,8.112655)">
+            <path
+               d="m 33.4,49 c -0.5,0.5 -1.2,0.5 -1.7,0 L 20.9,38.2 C 20.4,37.7 19.7,37 19.2,36.5 L 8.4,25.7 C 7.9,25.2 7.9,24.5 8.4,24 l 2.3,-2.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 l 2.3,-2.3 c 0.5,-0.5 1.2,-0.5 1.7,0 l 10.8,10.8 c 0.5,0.5 1.2,1.2 1.7,1.7 L 39.7,41 c 0.5,0.5 0.5,1.2 0,1.7 L 37.4,45 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 33.4,49 Z"
+               id="path4840" />
+          </g>
+        </svg>
 
-              <svg style="fill: #a00f0f" class="datepicker__calendar__nav__chevron" x="0px" y="0px" viewBox="0 0 50 50">
-                <g>
-                  <path d="M39.7,7.1c0.5,0.5,0.5,1.2,0,1.7L29,19.6c-0.5,0.5-1.2,1.2-1.7,1.7L16.5,32.1c-0.5,0.5-1.2,0.5-1.7,0l-2.3-2.3
-                        c-0.5-0.5-1.2-1.2-1.7-1.7l-2.3-2.3c-0.5-0.5-0.5-1.2,0-1.7l10.8-10.8c0.5-0.5,1.2-1.2,1.7-1.7L31.7,0.8c0.5-0.5,1.2-0.5,1.7,0
-                        l2.3,2.3c0.5,0.5,1.2,1.2,1.7,1.7L39.7,7.1z"/>
-                </g>
-                <g>
-                  <path d="M33.4,49c-0.5,0.5-1.2,0.5-1.7,0L20.9,38.2c-0.5-0.5-1.2-1.2-1.7-1.7L8.4,25.7c-0.5-0.5-0.5-1.2,0-1.7l2.3-2.3
-                        c0.5-0.5,1.2-1.2,1.7-1.7l2.3-2.3c0.5-0.5,1.2-0.5,1.7,0l10.8,10.8c0.5,0.5,1.2,1.2,1.7,1.7l10.8,10.8c0.5,0.5,0.5,1.2,0,1.7
-                        L37.4,45c-0.5,0.5-1.2,1.2-1.7,1.7L33.4,49z"/>
-                </g>
-              </svg>
             </div>
 
-      <div class="datepicker__calendar__nav__arrow" [hidden]="disableLeft" (click)="onArrowClick('left')">
+      <div class="datepicker__calendar__nav__arrow" [ngClass]="{ 'datepicker__calendar__nav__arrow--disabled': disableLeft }" (click)="onArrowClick('left')">
 
         <svg class="datepicker__calendar__nav__chevron" x="0px" y="0px" viewBox="0 0 50 50">
           <g>
@@ -37,7 +62,7 @@
         <span>{{ currentMonth }} {{ currentYear }}</span>
 
       </div>
-      <div class="datepicker__calendar__nav__arrow" [hidden]="disableRight" (click)="onArrowClick('right')">
+      <div class="datepicker__calendar__nav__arrow" [ngClass]="{ 'datepicker__calendar__nav__arrow--disabled': disableRight }" (click)="onArrowClick('right')">
         <svg class="datepicker__calendar__nav__chevron" x="0px" y="0px" viewBox="0 0 50 50">
           <g>
             <path d="M8.4,7.1c-0.5,0.5-0.5,1.2,0,1.7l10.8,10.8c0.5,0.5,1.2,1.2,1.7,1.7l10.8,10.8c0.5,0.5,1.2,0.5,1.7,0l2.3-2.3
@@ -52,20 +77,42 @@
         </svg>
       </div>
 
-      <div class="datepicker__calendar__nav__arrow" [hidden]="disableRightYear" (click)="onYearArrowClick('right')">
-
-              <svg style="fill: #a00f0f" class="datepicker__calendar__nav__chevron" x="0px" y="0px" viewBox="0 0 50 50">
-                <g>
-                  <path d="M39.7,7.1c0.5,0.5,0.5,1.2,0,1.7L29,19.6c-0.5,0.5-1.2,1.2-1.7,1.7L16.5,32.1c-0.5,0.5-1.2,0.5-1.7,0l-2.3-2.3
-                        c-0.5-0.5-1.2-1.2-1.7-1.7l-2.3-2.3c-0.5-0.5-0.5-1.2,0-1.7l10.8-10.8c0.5-0.5,1.2-1.2,1.7-1.7L31.7,0.8c0.5-0.5,1.2-0.5,1.7,0
-                        l2.3,2.3c0.5,0.5,1.2,1.2,1.7,1.7L39.7,7.1z"/>
-                </g>
-                <g>
-                  <path d="M33.4,49c-0.5,0.5-1.2,0.5-1.7,0L20.9,38.2c-0.5-0.5-1.2-1.2-1.7-1.7L8.4,25.7c-0.5-0.5-0.5-1.2,0-1.7l2.3-2.3
-                        c0.5-0.5,1.2-1.2,1.7-1.7l2.3-2.3c0.5-0.5,1.2-0.5,1.7,0l10.8,10.8c0.5,0.5,1.2,1.2,1.7,1.7l10.8,10.8c0.5,0.5,0.5,1.2,0,1.7
-                        L37.4,45c-0.5,0.5-1.2,1.2-1.7,1.7L33.4,49z"/>
-                </g>
-              </svg>
+      <div class="datepicker__calendar__nav__arrow" [ngClass]="{ 'datepicker__calendar__nav__arrow--disabled': disableRightYear }" (click)="onYearArrowClick('right')">
+        <svg
+           viewBox="0 0 50 50"
+           y="0px"
+           x="0px"
+           class="datepicker__calendar__nav__chevron"
+           >
+          <g
+             transform="matrix(-1,0,0,1,55.515254,0)"
+             id="g4280">
+            <path
+               id="path4282"
+               d="m 39.7,7.1 c 0.5,0.5 0.5,1.2 0,1.7 L 29,19.6 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 16.5,32.1 c -0.5,0.5 -1.2,0.5 -1.7,0 L 12.5,29.8 C 12,29.3 11.3,28.6 10.8,28.1 L 8.5,25.8 C 8,25.3 8,24.6 8.5,24.1 L 19.3,13.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 L 31.7,0.8 c 0.5,-0.5 1.2,-0.5 1.7,0 l 2.3,2.3 c 0.5,0.5 1.2,1.2 1.7,1.7 l 2.3,2.3 z" />
+          </g>
+          <g
+             transform="matrix(-1,0,0,1,55.515254,0)"
+             id="g4284">
+            <path
+               id="path4286"
+               d="m 33.4,49 c -0.5,0.5 -1.2,0.5 -1.7,0 L 20.9,38.2 C 20.4,37.7 19.7,37 19.2,36.5 L 8.4,25.7 C 7.9,25.2 7.9,24.5 8.4,24 l 2.3,-2.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 l 2.3,-2.3 c 0.5,-0.5 1.2,-0.5 1.7,0 l 10.8,10.8 c 0.5,0.5 1.2,1.2 1.7,1.7 L 39.7,41 c 0.5,0.5 0.5,1.2 0,1.7 L 37.4,45 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 33.4,49 Z" />
+          </g>
+          <g
+             id="g4834"
+             transform="matrix(-0.68269917,0,0,0.68269917,29.240101,8.112655)">
+            <path
+               d="m 39.7,7.1 c 0.5,0.5 0.5,1.2 0,1.7 L 29,19.6 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 16.5,32.1 c -0.5,0.5 -1.2,0.5 -1.7,0 L 12.5,29.8 C 12,29.3 11.3,28.6 10.8,28.1 L 8.5,25.8 C 8,25.3 8,24.6 8.5,24.1 L 19.3,13.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 L 31.7,0.8 c 0.5,-0.5 1.2,-0.5 1.7,0 l 2.3,2.3 c 0.5,0.5 1.2,1.2 1.7,1.7 l 2.3,2.3 z"
+               id="path4836" />
+          </g>
+          <g
+             id="g4838"
+             transform="matrix(-0.68269917,0,0,0.68269917,29.240101,8.112655)">
+            <path
+               d="m 33.4,49 c -0.5,0.5 -1.2,0.5 -1.7,0 L 20.9,38.2 C 20.4,37.7 19.7,37 19.2,36.5 L 8.4,25.7 C 7.9,25.2 7.9,24.5 8.4,24 l 2.3,-2.3 c 0.5,-0.5 1.2,-1.2 1.7,-1.7 l 2.3,-2.3 c 0.5,-0.5 1.2,-0.5 1.7,0 l 10.8,10.8 c 0.5,0.5 1.2,1.2 1.7,1.7 L 39.7,41 c 0.5,0.5 0.5,1.2 0,1.7 L 37.4,45 c -0.5,0.5 -1.2,1.2 -1.7,1.7 L 33.4,49 Z"
+               id="path4840" />
+          </g>
+        </svg>
             </div>
     </div>
     <div class="datepicker__calendar__content">
@@ -78,10 +125,12 @@
         <div
           *ngFor="let day of calendarDays"
           class="datepicker__calendar__month__day"
-          [ngStyle]="{'cursor': day == 0 ? 'initial' : 'pointer',
-                      'background-color': getDayBackgroundColor(day),
-                      'color': isHoveredDay(day) ? accentColor : getDayFontColor(day),
-                      'pointer-events': day == 0 ? 'none' : ''
+          [ngClass]="{'datepicker__calendar__day--isEmptyDay': day === 0,
+                      'datepicker__calendar__day--isValidDay': day !== 0,
+                      'datepicker__calendar__day--isChosenDay': isChosenDay(day),
+                      'datepicker__calendar__day--isBetweenDay': isBetweenSelectedDateRange(day),
+                      'datepicker__calendar__day--isHovered': isHoveredDay(day),
+                      'datepicker__calendar__day--isInvalidState': !isValid
                       }"
           (click)="onSelectDay(day)"
           (mouseenter)="hoveredDay = day"

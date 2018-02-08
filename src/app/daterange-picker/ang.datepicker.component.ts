@@ -62,6 +62,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
   @Input() dayNames: Array<String> = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Default order: firstDayOfTheWeek = 0
   @Input() hoveredDay: Date;
   @Input() months: Array<string>;
+  @Input() isValid: Boolean;
   public disableLeft = false;
   public disableRight = false;
   public disableLeftYear = false;

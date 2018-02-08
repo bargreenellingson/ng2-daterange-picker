@@ -111,8 +111,15 @@
           transform: scale(1.05);
 }
 
+.datepicker__calendar__nav__arrow--disabled {
+  cursor: pointer;
+ .datepicker__calendar__nav__chevron {
+    fill: #dadada;
+  }
+}
+
 .datepicker__calendar__nav__chevron {
-  fill: #bbbbbb;
+  fill: #7e7e7e;
   -webkit-transition: 0.37s;
   transition: 0.37s;
 }
@@ -160,3 +167,41 @@
   padding: .2em .6em;
   font-size: 14px;
 }
+
+
+
+////////////////////////////////////////////////////////////////////
+//Classes added dynamically depending on the state of the calendar//
+////////////////////////////////////////////////////////////////////
+
+.datepicker__calendar__day--isBetweenDay {
+  background-color: lightblue;
+}
+
+.datepicker__calendar__day--isChosenDay {
+  background-color: #0093ff;
+  color: white;
+  font-weight: bold;
+}
+
+.datepicker__calendar__day--isHovered {
+  background-color: lightblue;
+}
+
+.datepicker__calendar__day--isValidDay {
+  cursor: pointer;
+}
+
+.datepicker__calendar__day--isEmptyDay {
+  pointer-events: none;
+  cursor: initial;
+}
+.datepicker__calendar__day--isInvalidState.datepicker__calendar__day--isChosenDay {
+  background-color: #ff4e4e;
+}
+
+///////////////////////////
+//  Datepicker arrow css // 
+///////////////////////////
+
+

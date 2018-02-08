@@ -6,9 +6,13 @@
   }
   background-color: white;
 }
-.date-pickers {
+.datepickers {
   display: flex;
   flex-direction: column;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .datepickerrange__msg {
@@ -27,12 +31,8 @@
   display: none;
 }
 
-.date-picker {
-  display: flex;
-  flex-direction: column;
-}
-
 .controls {
+  width: 13em;
   display: flex;
   flex-direction: column;
 }
@@ -45,7 +45,7 @@
         justify-content: space-between;
         order: 0;
       }
-      .date-pickers {
+      .datepickers {
         flex-direction: row;
         order: 1;
       }   
@@ -58,6 +58,10 @@
     display: block;
   }
   .datepickerrange__msg {
+    font-family: sans-serif;
     text-align: left;
+  }
+ .datepickerrange_msg--warn {
+    color: #ff4e4e;
   }
 }

@@ -1,7 +1,7 @@
 
 <mat-card>
-  <div class="date-pickers">
-    <div class="date-picker">
+  <div class="datepickers">
+    <div>
       <span class="datepickerrange__header"> Start Date </span>
       <ang-datepicker 
             [(date)]="startDate" 
@@ -9,16 +9,18 @@
             [dateFormat]="dateFormat" 
             [rangeStart]="rangeStart"
             [rangeEnd]="rangeEnd"
+            [isValid]="isValid"
             [endDate]="endDate" 
             [startDate]="startDate">
       </ang-datepicker>
     </div>
-    <div class="date-picker">
+    <div>
       <span class="datepickerrange__header"> End Date </span>
       <ang-datepicker 
             [(date)]="endDate" 
             (onSelect)="onSelectEndDate($event)" 
             [dateFormat]="dateFormat" 
+            [isValid]="isValid"
             [rangeStart]="rangeStart"
             [rangeEnd]="rangeEnd"
             [endDate]="endDate" 
@@ -33,7 +35,10 @@
       <h3> End Date </h3>
       <p>{{ endDateText }}</p>
     </div>
-    <div class="datepickerrange__msg"> {{ msg }} </div>
+    <div 
+      class="datepickerrange__msg"
+      [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
+      > {{ msg }} </div>
     <div class="datepickerrange__buttons">
       <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
       </button>
