@@ -16,7 +16,7 @@ export class DaterangePickerComponent implements OnInit {
   @Input() public dateTest: any;
   @Input() public dateFormat = 'YYYY-MM-DD';
   public isValid = true;
-  public msg = '';
+  public msg = [];
   private el: ElementRef;
   public startDateText = '';
   public endDateText = '';
@@ -28,8 +28,6 @@ export class DaterangePickerComponent implements OnInit {
   constructor(_el: ElementRef) {
     this.el = _el;
     this.el.nativeElement.style.position = 'absolute';
-    this.startDate = new Date();
-    this.endDate = new Date();
   }
 
   static initWithData(_viewContainer: ViewContainerRef, _componentFactory: any): any {
@@ -49,6 +47,13 @@ export class DaterangePickerComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.rangeStart && this.rangeEnd) {
+      this.startDate = this.rangeStart;
+      this.endDate = this.endDate;
+    } else {
+    this.startDate = new Date();
+    this.endDate = new Date();
+    }
     this.startDateText = moment(this.startDate).format(this.dateFormat);
     this.endDateText = moment(this.endDate).format(this.dateFormat);
   }
@@ -56,21 +61,13 @@ export class DaterangePickerComponent implements OnInit {
   onSelectStartDate($event: any) {
     this.startDate = $event.date;
     this.startDateText = $event.dateText;
-    if (this.dateTest) {
-      const testResult = this.dateTest(this.startDate, this.endDate);
-      this.isValid = testResult.valid;
-      this.msg = testResult.msg;
-    }
+    this.runDateTest();
   }
 
   onSelectEndDate($event: any) {
     this.endDate = $event.date;
     this.endDateText = $event.dateText;
-    if (this.dateTest) {
-      const testResult = this.dateTest(this.startDate, this.endDate);
-      this.isValid = testResult.valid;
-      this.msg = testResult.msg;
-    }
+    this.runDateTest();
   }
 
   onApplySelectedDateRange() {
@@ -115,6 +112,19 @@ export class DaterangePickerComponent implements OnInit {
       case 'top':   return _viewContainer.element.nativeElement.offsetTop;
 
       default:      return 0;
+    }
+
+  }
+  private runDateTest() {
+    if (this.dateTest) {
+      const testResult = this.dateTest(this.startDate, this.endDate);
+      if (testResult.length > 0) {
+        this.isValid = false;
+        this.msg = testResult;
+      } else {
+        this.msg = [];
+        this.isValid = true;
+      }
     }
 
   }

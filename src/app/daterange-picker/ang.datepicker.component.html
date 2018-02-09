@@ -130,7 +130,8 @@
                       'datepicker__calendar__day--isChosenDay': isChosenDay(day),
                       'datepicker__calendar__day--isBetweenDay': isBetweenSelectedDateRange(day),
                       'datepicker__calendar__day--isHovered': isHoveredDay(day),
-                      'datepicker__calendar__day--isInvalidState': !isValid
+                      'datepicker__calendar__day--isInvalidState': !isValid,
+                      'datepicker__calendar__day--isNotInRange': !isDayValid(day)
                       }"
           (click)="onSelectDay(day)"
           (mouseenter)="hoveredDay = day"

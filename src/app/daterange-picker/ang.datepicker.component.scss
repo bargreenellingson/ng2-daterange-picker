@@ -200,8 +200,7 @@
   background-color: #ff4e4e;
 }
 
-///////////////////////////
-//  Datepicker arrow css // 
-///////////////////////////
-
-
+.datepicker__calendar__day--isNotInRange {
+  pointer-events: none;
+  color: #d8d8d8;
+}

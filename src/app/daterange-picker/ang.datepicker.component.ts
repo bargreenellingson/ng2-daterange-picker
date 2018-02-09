@@ -195,7 +195,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
         newYear = this.currentYear + 1;
     }
     // check if new date would be within range
-    this.isDateValid(newYear, this.currentMonthNumber, direction);
+    this.isNextDateValid(newYear, this.currentMonthNumber, direction, 0);
     this.updateArrows();
   }
   public updateArrows(): void {
@@ -238,7 +238,13 @@ export class DatePickerComponent implements OnInit, OnChanges {
       }
     }
     // check if new date would be within range
-    this.isDateValid(newYear, newMonth, direction);
+    const newDateValid = this.isNextDateValid(newYear, newMonth, direction, 0);
+    if (newDateValid) {
+      this.setCurrentYear(newYear);
+      this.currentMonthNumber = newMonth;
+      this.setCurrentMonth(newMonth);
+      this.triggerAnimation(direction);
+    }
     this.updateArrows();
   }
 
@@ -251,34 +257,14 @@ export class DatePickerComponent implements OnInit, OnChanges {
       newDate.setMonth(newDate.getMonth() - amount);
     }
     let newDateValid: boolean;
-    if (direction === 'left') {
-      newDateValid = !this.rangeStart || newDate.valueOf() >= this.rangeStart.valueOf();
-      direction = 'left';
-    } else if (direction === 'right') {
-      newDateValid = !this.rangeEnd || newDate.valueOf() <= this.rangeEnd.valueOf();
-      direction = 'right';
-    }
-
+    newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '[]'); // true
     return newDateValid;
   }
 
-  isDateValid(year, month, direction) {
-    const newDate = new Date(year, month);
-    let newDateValid: boolean;
-    if (direction === 'left') {
-      newDateValid = !this.rangeStart || newDate.valueOf() >= this.rangeStart.valueOf();
-      direction = 'left';
-    } else if (direction === 'right') {
-      newDateValid = !this.rangeEnd || newDate.valueOf() <= this.rangeEnd.valueOf();
-      direction = 'right';
-    }
-
-    if (newDateValid) {
-      this.setCurrentYear(year);
-      this.currentMonthNumber = month;
-      this.setCurrentMonth(month);
-      this.triggerAnimation(direction);
-    }
+  isDayValid(day) {
+    const isBetween = moment(day).isBetween(this.rangeStart, this.rangeEnd, 'day', '()'); // true
+    const dateValid = !this.rangeStart || isBetween;
+    return dateValid;
   }
 
   filterInvalidDays(calendarDays: Array<number>): Array<number> {

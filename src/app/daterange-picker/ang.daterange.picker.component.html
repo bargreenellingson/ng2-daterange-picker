@@ -38,7 +38,8 @@
     <div 
       class="datepickerrange__msg"
       [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
-      > {{ msg }} </div>
+      *ngFor="let m of msg"
+      > {{ m }} </div>
     <div class="datepickerrange__buttons">
       <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
       </button>
