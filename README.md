@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/ng2-daterange-picker-bfork.svg)](https://badge.fury.io/js/ng2-daterange-picker-bfork)
 
+![daterange gif](https://raw.githubusercontent.com/bargreenellingson/ng2-daterange-picker/master/dateinputrange.gif)
+
 Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-daterange-picker)
 
 ## Using the component
