@@ -117,14 +117,11 @@ export class DatePickerComponent implements OnInit, OnChanges {
     if (changes['firstDayOfTheWeek'] || changes['dayNames']) {
       this.updateDayNames();
     }
-  }
-
-  ngOnDestroy() {
-    this.clickListener();
+    this.updateArrows();
   }
 
   closeCalendar(): void {
-    this.syncVisualsWithDate();
+
   }
 
   private setCurrentValues(date: Date) {
@@ -184,20 +181,6 @@ export class DatePickerComponent implements OnInit, OnChanges {
     this.inputText = inputText;
   }
 
-  onYearArrowClick(direction: string): void {
-    const currentMonth: number = this.currentMonthNumber;
-    let newYear: number = this.currentYear;
-    // sets the newMonth
-    // changes newYear is necessary
-    if (direction === 'left') {
-        newYear = this.currentYear - 1;
-    } else if (direction === 'right') {
-        newYear = this.currentYear + 1;
-    }
-    // check if new date would be within range
-    this.isNextDateValid(newYear, this.currentMonthNumber, direction, 0);
-    this.updateArrows();
-  }
   public updateArrows(): void {
     const directions = ['left', 'right'];
     this.disableLeftYear = false;
@@ -214,6 +197,26 @@ export class DatePickerComponent implements OnInit, OnChanges {
         (direction === 'left') ? this.disableLeftYear = true : this.disableRightYear = true;
       }
     });
+  }
+
+  onYearArrowClick(direction: string): void {
+    const currentMonth: number = this.currentMonthNumber;
+    let newYear: number = this.currentYear;
+    // sets the newMonth
+    // changes newYear is necessary
+    if (direction === 'left') {
+        newYear = this.currentYear - 1;
+    } else if (direction === 'right') {
+        newYear = this.currentYear + 1;
+    }
+    // check if new date would be within range
+    const newDateValid = this.isNextDateValid(newYear, this.currentMonthNumber, direction, 0);
+    if (newDateValid) {
+      this.setCurrentYear(newYear);
+      this.triggerAnimation(direction);
+      this.setCurrentMonth(this.currentMonthNumber);
+    }
+    this.updateArrows();
   }
 
   onArrowClick(direction: string): void {
@@ -253,8 +256,14 @@ export class DatePickerComponent implements OnInit, OnChanges {
     // Adjust month depending on the direction
     if (direction === 'right') {
       newDate.setMonth(newDate.getMonth() + amount);
+      if (moment(newDate).isBefore(this.rangeStart) && moment(newDate).isBefore(this.rangeEnd) || this.rangeStart === undefined) {
+        return true;
+      }
     } else {
       newDate.setMonth(newDate.getMonth() - amount);
+      if (moment(newDate).isAfter(this.rangeStart) && moment(newDate).isAfter(this.rangeEnd) || this.rangeEnd === undefined) {
+        return true;
+      }
     }
     let newDateValid: boolean;
     newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '[]'); // true
@@ -285,11 +294,13 @@ export class DatePickerComponent implements OnInit, OnChanges {
     this.onSelect.emit({date: day, dateText: this.inputText});
   }
 
+  // Not used anymore
+  //
   handleGlobalClick(event: MouseEvent): void {
-    // const withinElement = this.elementRef.nativeElement.contains(event.target);
-    // if (!this.elementRef.nativeElement.contains(event.target)) {
-    //   this.closeCalendar();
-    // }
+  //   const withinElement = this.elementRef.nativeElement.contains(event.target);
+  //   if (!this.elementRef.nativeElement.contains(event.target)) {
+  //     this.closeCalendar();
+  //   }
   }
 
   getDayBackgroundColor(day: Date): string {

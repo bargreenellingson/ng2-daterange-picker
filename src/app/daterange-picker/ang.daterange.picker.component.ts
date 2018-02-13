@@ -1,25 +1,30 @@
 import { Component, ComponentRef, ElementRef, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
-import { DatePickerComponent } from './ang.datepicker.component';
+import { DatePickerComponent } from './datepicker/ang.datepicker.component';
 import moment from 'moment-es6';
 
 @Component({
-  selector: 'ang-daterange-picker',
+  selector: 'app-daterange-picker',
   templateUrl: './ang.daterange.picker.component.html',
   styleUrls: ['./ang.daterange.picker.component.scss']
 })
 export class DaterangePickerComponent implements OnInit {
 
-  @Input() public startDate: Date;
-  @Input() public endDate: Date;
+  @Input() public startDate = new Date();
+  @Input() public endDate = new Date();
   @Input() public rangeStart: Date;
   @Input() public rangeEnd: Date;
-  @Input() public dateTest: any;
   @Input() public dateFormat = 'YYYY-MM-DD';
+  @Input() ranges: Array<{dateStart: Date, dateEnd: Date, name: String}>;
+  public isCalendarOpen = false;
   public isValid = true;
   public msg = [];
   private el: ElementRef;
-  public startDateText = '';
-  public endDateText = '';
+  get startDateText() {
+    return moment(this.startDate).format(this.dateFormat);
+  }
+  get endDateText() {
+    return moment(this.endDate).format(this.dateFormat);
+  }
   private selfComponentRef: ComponentRef<any>;
 
   @Output() OnCloseDaterangePicker: EventEmitter<any> = new EventEmitter<any>();
@@ -27,7 +32,6 @@ export class DaterangePickerComponent implements OnInit {
 
   constructor(_el: ElementRef) {
     this.el = _el;
-    this.el.nativeElement.style.position = 'absolute';
   }
 
   static initWithData(_viewContainer: ViewContainerRef, _componentFactory: any): any {
@@ -46,33 +50,34 @@ export class DaterangePickerComponent implements OnInit {
     return instance;
   }
 
+  @Input() public dateTest = function(datestart, dateend) {
+      return [];
+  };
+
   ngOnInit() {
-    if (this.rangeStart && this.rangeEnd) {
-      this.startDate = this.rangeStart;
-      this.endDate = this.endDate;
-    } else {
-    this.startDate = new Date();
-    this.endDate = new Date();
-    }
-    this.startDateText = moment(this.startDate).format(this.dateFormat);
-    this.endDateText = moment(this.endDate).format(this.dateFormat);
+    // if (this.rangeStart && this.rangeEnd) {
+    //   this.startDate = this.rangeStart;
+    //   this.endDate = this.endDate;
+    // } else {
+    // this.startDate = new Date();
+    // this.endDate = new Date();
+    // }
   }
 
   onSelectStartDate($event: any) {
     this.startDate = $event.date;
-    this.startDateText = $event.dateText;
     this.runDateTest();
   }
 
   onSelectEndDate($event: any) {
     this.endDate = $event.date;
-    this.endDateText = $event.dateText;
     this.runDateTest();
   }
 
   onApplySelectedDateRange() {
     this.OnSelectedDaterange.emit({startDate: this.startDate, endDate: this.endDate});
     this.destroyComponentRef();
+    this.closeCalendar();
   }
 
   onCloseContextualMenu() {
@@ -88,6 +93,11 @@ export class DaterangePickerComponent implements OnInit {
     this.selfComponentRef = _componentRef;
   }
 
+  OnPredefinedRangeSelect($event) {
+    this.startDate = $event.dateStart;
+    this.endDate = $event.dateEnd;
+    this.onApplySelectedDateRange();
+  }
 
   getViewContainerDOMSpaceProperty(_viewContainer: ViewContainerRef, _property: string = ''): number {
     return parseInt(_viewContainer.element.nativeElement[_property]);
@@ -115,6 +125,14 @@ export class DaterangePickerComponent implements OnInit {
     }
 
   }
+  toggleCalendar() {
+    this.isCalendarOpen = !this.isCalendarOpen;
+  }
+
+  closeCalendar() {
+    this.isCalendarOpen = false;
+  }
+
   private runDateTest() {
     if (this.dateTest) {
       const testResult = this.dateTest(this.startDate, this.endDate);

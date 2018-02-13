@@ -1,4 +1,8 @@
-:host {
+.datepickerrange {
+	position: absolute;
+	top: 0;
+	heigth: 100vh;
+	width: 100vw;
   .mat-card {
     display: flex;
     flex-direction: column;
@@ -7,6 +11,15 @@
   }
   background-color: white;
 	width: 100%;
+}
+
+.predefinedrange {
+  width: 100%;
+  order: 0;
+}
+.datepickers {
+  flex-direction: row;
+  order: 1;
 }
 
 .datepickers {
@@ -23,6 +36,10 @@
   }
 }
 
+.datepickerrange_msg--warn {
+	color: #ff4e4e;
+}
+
 .datepickerrange__msg {
   min-height: 1.1em;
   margin-bottom: 1em;
@@ -32,7 +49,9 @@
 .datepickerrange__buttons {
   display: flex;
   justify-content: space-between;
-  
+  button {
+    height: 40px;
+  }
 }
 
 .dateText{
@@ -40,37 +59,59 @@
 }
 
 .controls {
+  order: 2;
   width: 13em;
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (min-width: 700px) {
-  :host {
+
+  .datepickerrange {
+		top: unset;
 		width: auto;
     .mat-card {
+			height: 310px;
       flex-direction: row;
       .controls {
         justify-content: space-between;
         order: 0;
+				height: 100%;
       }
       .datepickers {
         flex-direction: row;
         order: 1;
-      }   
+      }
+      .predefinedrange {
+        order: 2;
+      }
       .control {
         max-width: 11em;
       }
     }
   }
+
   .dateText{
+		h3 { 
+			text-transform: uppercase;
+			font-size: .9em;
+			margin-top: 0;
+			margin-bottom: .3em;
+		}
+		p {
+			margin: 0 0 .6em 0;
+		}
     display: block;
   }
+
   .datepickerrange__msg {
     font-family: sans-serif;
     text-align: left;
-  }
- .datepickerrange_msg--warn {
-    color: #ff4e4e;
+		height: 100%;
+		overflow-y: auto;
+		p { 
+			margin: .4em 0 0 0;
+			font-size: .8em;
+		}
   }
 }

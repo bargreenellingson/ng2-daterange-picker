@@ -1,26 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<form #calendarForm class="calendar input">
-  <input [(ngModel)]="startDate"
-  placeholder="select start date"
-  name="startDate"
-  /> 
-  <input [(ngModel)]="endDate"
-  placeholder="select end date"
-  name="endDate"
-  /> 
-  <button (click)="openCalendar()"> Open Calendar </button>
-</form>
-<ng-container *ngIf="isOpen">
-  <ang-daterange-picker
-    [startDate]="startDate"
-    [endDate]="endDate"
-    [dateFormat]="'MMM DD, YYYY'"
-    [rangeStart]="rangeStart"
-    [rangeEnd]="rangeEnd"
-    [dateTest]="dateTest"
-    (OnSelectedDaterange)="applyDates($event)"
-    (OnCloseDaterangePicker)="openCalendar()"
-    ></ang-daterange-picker>
-</ng-container>
+<app-daterange-picker
+  [startDate]="startDate"
+  [endDate]="endDate"
+  [dateFormat]="'YYYY/DD/MM'"
+  [rangeStart]="rangeStart"
+  [rangeEnd]="rangeEnd"
+  [dateTest]="dateTest"
+  [ranges]="ranges"
+  ></app-daterange-picker>
+<app-daterange-picker
+  [dateFormat]="'YYYY/DD/MM'"
+  ></app-daterange-picker>
 
 <h1> This is some content whoa </h1>

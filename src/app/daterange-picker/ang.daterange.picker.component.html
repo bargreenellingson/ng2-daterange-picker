@@ -1,51 +1,81 @@
+<app-date-input
+  class="date-input"
+  [startDate]="startDate"
+  [endDate]="endDate"
+  (OnToggleCalendar)="toggleCalendar()"
+  (OnSelectStartDate)="onSelectStartDate($event)"
+  (OnSelectEndDate)="onSelectEndDate($event)"
+  (OnApplyDateRange)="onApplySelectedDateRange()"
+  [(isValidRange)]="isValid"
+  [dateFormat]="dateFormat"
+  >
 
-<mat-card>
-  <div class="datepickers">
-    <div>
-      <span class="datepickerrange__header"> Start Date </span>
-      <ang-datepicker 
-            [(date)]="startDate" 
-            (onSelect)="onSelectStartDate($event)" 
-            [dateFormat]="dateFormat" 
-            [rangeStart]="rangeStart"
-            [rangeEnd]="rangeEnd"
-            [isValid]="isValid"
-            [endDate]="endDate" 
-            [startDate]="startDate">
-      </ang-datepicker>
-    </div>
-    <div>
-      <span class="datepickerrange__header"> End Date </span>
-      <ang-datepicker 
-            [(date)]="endDate" 
-            (onSelect)="onSelectEndDate($event)" 
-            [dateFormat]="dateFormat" 
-            [isValid]="isValid"
-            [rangeStart]="rangeStart"
-            [rangeEnd]="rangeEnd"
-            [endDate]="endDate" 
-            [startDate]="startDate">
-      </ang-datepicker>
-    </div>
-  </div>
-  <div class="controls">
-    <div class="dateText">
-      <h3> Start Date </h3>
-      <p>{{ startDateText }}</p>
-      <h3> End Date </h3>
-      <p>{{ endDateText }}</p>
-    </div>
-    <div 
-      class="datepickerrange__msg"
-      [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
-      *ngFor="let m of msg"
-      > {{ m }} </div>
-    <div class="datepickerrange__buttons">
-      <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
-      </button>
-      <button mat-button (click)="onCloseContextualMenu()">Cancel
-      </button>
-    </div>
-  </div>
-</mat-card>
+</app-date-input>
+<ng-container *ngIf="!isCalendarOpen">
+  <p
+    [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
+    *ngFor="let m of msg"> 
+    {{ m }} 
+  </p>
+</ng-container>
 
+<ng-container *ngIf="isCalendarOpen">
+  <div class="datepickerrange">
+    <mat-card >
+      <div class="datepickers">
+        <div>
+          <span class="datepickerrange__header"> Start Date </span>
+          <ang-datepicker 
+                [(date)]="startDate" 
+                (onSelect)="onSelectStartDate($event)" 
+                [dateFormat]="dateFormat" 
+                [rangeStart]="rangeStart"
+                [rangeEnd]="rangeEnd"
+                [isValid]="isValid"
+                [endDate]="endDate" 
+                [startDate]="startDate">
+          </ang-datepicker>
+        </div>
+        <div>
+          <span class="datepickerrange__header"> End Date </span>
+          <ang-datepicker 
+                [(date)]="endDate" 
+                (onSelect)="onSelectEndDate($event)" 
+                [dateFormat]="dateFormat" 
+                [isValid]="isValid"
+                [rangeStart]="rangeStart"
+                [rangeEnd]="rangeEnd"
+                [endDate]="endDate" 
+                [startDate]="startDate">
+          </ang-datepicker>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="dateText">
+          <h3> Start Date </h3>
+          <p>{{ startDateText }}</p>
+          <h3> End Date </h3>
+          <p>{{ endDateText }}</p>
+        </div>
+        <div class="datepickerrange__msg">
+          <p
+            [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
+            *ngFor="let m of msg"> 
+            {{ m }} 
+          </p>
+        </div>
+        <div class="datepickerrange__buttons">
+          <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
+          </button>
+          <button mat-button (click)="toggleCalendar()">Cancel
+          </button>
+        </div>
+      </div>
+      <app-predefined-range 
+        class="predefinedrange"
+        [ranges]="ranges"
+        (OnRangeSelect)="OnPredefinedRangeSelect($event)"
+        ></app-predefined-range>
+    </mat-card>
+  </div>
+</ng-container>

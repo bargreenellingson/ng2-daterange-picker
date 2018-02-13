@@ -2,15 +2,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatCardModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatSelectModule } from '@angular/material';
 
 
 import { DaterangePickerComponent } from './ang.daterange.picker.component';
-import { DatePickerComponent } from './ang.datepicker.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePickerComponent } from './datepicker/ang.datepicker.component';
+import { PredefinedRangeComponent } from './predefined-range/predefined-range.component';
+import { DateinputComponent } from './dateinput/dateinput.component';
 
 @NgModule({
-  declarations: [ DaterangePickerComponent, DatePickerComponent ],
+  declarations: [ DaterangePickerComponent, DatePickerComponent, PredefinedRangeComponent, DateinputComponent ],
   exports: [ DaterangePickerComponent ],
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    BrowserAnimationsModule  ]
+    MatSelectModule,
+  ]
 })
 export class DaterangePickerModule { }
