@@ -18,11 +18,13 @@ Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-datera
   [rangeEnd]="rangeEnd"
   [dateTest]="dateTest"
   [ranges]="ranges"
+  (OnSelectedDaterange)="onApply($event)"
   ></app-daterange-picker>
 
 <!-- Minimal Calendar -->
 <app-daterange-picker
   [dateFormat]="'YYYY/DD/MM'"
+  (OnSelectedDaterange)="onApply($event)"
   ></app-daterange-picker>
 ```
 
@@ -69,6 +71,18 @@ which makes sure the start date doesn't come before the end date:
   }
 
 ```
+
+### OnSelectedDaterange
+
+Output event which emits an object in this format: 
+
+```
+{
+  startDate: <Date>,
+  endDate: <Date> 
+}
+```
+
 # Developing
 
 ## Development server
