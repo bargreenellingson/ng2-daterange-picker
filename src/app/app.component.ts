@@ -5,14 +5,14 @@ import moment from 'moment-es6';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
 
-  public rangeStart = new Date('2018-04-07');
-  public rangeEnd = new Date('2020-06-07');
-  public startDate = new Date('2018-04-07');
-  public endDate = new Date('2018-06-07');
+  public rangeStart = moment().startOf('year');
+  public rangeEnd = moment().endOf('day').toDate();
+  public startDate = moment().startOf('year').toDate();
+  public endDate = moment().toDate();
   public ranges = [];
 
   public ngOnInit() {

@@ -1,6 +1,6 @@
 import {
   animate, Component, ElementRef, EventEmitter, Input, keyframes, OnChanges,
-  OnInit, Output, Renderer, SimpleChange, state, style, transition, trigger
+  OnInit, Output, SimpleChange, state, style, transition, trigger
 } from '@angular/core';
 import { Calendar } from './ang.calendar';
 import moment from 'moment-es6';
@@ -76,9 +76,8 @@ export class DatePickerComponent implements OnInit, OnChanges {
   currentYear: number;
   animate: string;
   colors: { [id: string]: string };
-  clickListener: Function;
 
-  constructor(private renderer: Renderer, private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef) {
 
     this.dateFormat = this.DEFAULT_FORMAT;
     this.colors = {
@@ -96,12 +95,6 @@ export class DatePickerComponent implements OnInit, OnChanges {
       'January', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'October', 'November', ' December'
     ];
-
-    this.clickListener = renderer.listenGlobal(
-      'document',
-      'click',
-      (event: MouseEvent) => this.handleGlobalClick(event)
-    );
   }
 
   ngOnInit() {
@@ -118,10 +111,6 @@ export class DatePickerComponent implements OnInit, OnChanges {
       this.updateDayNames();
     }
     this.updateArrows();
-  }
-
-  closeCalendar(): void {
-
   }
 
   private setCurrentValues(date: Date) {
@@ -266,12 +255,12 @@ export class DatePickerComponent implements OnInit, OnChanges {
       }
     }
     let newDateValid: boolean;
-    newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '[]'); // true
+    newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '()'); // true
     return newDateValid;
   }
 
   isDayValid(day) {
-    const isBetween = moment(day).isBetween(this.rangeStart, this.rangeEnd, 'day', '()'); // true
+    const isBetween = moment(day).isBetween(this.rangeStart, this.rangeEnd, 'day', '[]'); // true
     const dateValid = !this.rangeStart || isBetween;
     return dateValid;
   }
@@ -292,15 +281,6 @@ export class DatePickerComponent implements OnInit, OnChanges {
     this.date = day;
     this.syncVisualsWithDate();
     this.onSelect.emit({date: day, dateText: this.inputText});
-  }
-
-  // Not used anymore
-  //
-  handleGlobalClick(event: MouseEvent): void {
-  //   const withinElement = this.elementRef.nativeElement.contains(event.target);
-  //   if (!this.elementRef.nativeElement.contains(event.target)) {
-  //     this.closeCalendar();
-  //   }
   }
 
   getDayBackgroundColor(day: Date): string {

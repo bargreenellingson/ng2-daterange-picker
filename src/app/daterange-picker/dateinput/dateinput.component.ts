@@ -1,5 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
 import moment from 'moment-es6';
 
 @Component({
@@ -22,13 +25,6 @@ export class DateinputComponent {
   get startDateFormat() {
     return moment(this.startDate).format(this.dateFormat);
   }
-
-  // set startDateFormat(val) {
-  //   if (!(isNaN(tempDate.getTime()))) {
-  //     this.startDate = tempDate;
-  //     this.errorMessages = [];
-  //   }
-  // }
 
   get endDateFormat() {
     return moment(this.endDate).format(this.dateFormat);

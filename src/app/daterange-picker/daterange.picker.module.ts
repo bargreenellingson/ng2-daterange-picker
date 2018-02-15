@@ -9,6 +9,7 @@ import { DaterangePickerComponent } from './ang.daterange.picker.component';
 import { DatePickerComponent } from './datepicker/ang.datepicker.component';
 import { PredefinedRangeComponent } from './predefined-range/predefined-range.component';
 import { DateinputComponent } from './dateinput/dateinput.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ DaterangePickerComponent, DatePickerComponent, PredefinedRangeComponent, DateinputComponent ],
@@ -23,6 +24,7 @@ import { DateinputComponent } from './dateinput/dateinput.component';
     MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
+    MatIconModule
   ]
 })
 export class DaterangePickerModule { }

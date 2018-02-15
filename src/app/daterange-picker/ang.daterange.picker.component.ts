@@ -1,4 +1,4 @@
-import { Component, ComponentRef, ElementRef, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Renderer2, ElementRef, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { DatePickerComponent } from './datepicker/ang.datepicker.component';
 import moment from 'moment-es6';
 
@@ -18,6 +18,7 @@ export class DaterangePickerComponent implements OnInit {
   public isCalendarOpen = false;
   public isValid = true;
   public msg = [];
+  clickListener: Function;
   private el: ElementRef;
   get startDateText() {
     return moment(this.startDate).format(this.dateFormat);
@@ -30,8 +31,13 @@ export class DaterangePickerComponent implements OnInit {
   @Output() OnCloseDaterangePicker: EventEmitter<any> = new EventEmitter<any>();
   @Output() OnSelectedDaterange: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(_el: ElementRef) {
+  constructor(_el: ElementRef, private renderer: Renderer2) {
     this.el = _el;
+    this.clickListener = renderer.listen(
+      'document',
+      'click',
+      (event: MouseEvent) => this.handleGlobalClick(event)
+    );
   }
 
   static initWithData(_viewContainer: ViewContainerRef, _componentFactory: any): any {
@@ -55,13 +61,6 @@ export class DaterangePickerComponent implements OnInit {
   };
 
   ngOnInit() {
-    // if (this.rangeStart && this.rangeEnd) {
-    //   this.startDate = this.rangeStart;
-    //   this.endDate = this.endDate;
-    // } else {
-    // this.startDate = new Date();
-    // this.endDate = new Date();
-    // }
   }
 
   onSelectStartDate($event: any) {
@@ -98,6 +97,16 @@ export class DaterangePickerComponent implements OnInit {
     this.endDate = $event.dateEnd;
     this.onApplySelectedDateRange();
   }
+
+  // Not working for some reason
+  handleGlobalClick(event: MouseEvent): void {
+    //   console.log(this.el.nativeElement);
+    //   const withinElement = this.el.nativeElement.contains(event.target);
+    //   if (!(withinElement)) {
+    //     this.closeCalendar();
+    //   }
+  }
+
 
   getViewContainerDOMSpaceProperty(_viewContainer: ViewContainerRef, _property: string = ''): number {
     return parseInt(_viewContainer.element.nativeElement[_property]);

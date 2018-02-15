@@ -15,10 +15,13 @@
                     pattern="\d{1,2}\/\d{1,2}\/\d{4}"
                     name="endDate"
                     > 
-                    <mat-hint align="start"><strong> {{ dateFormat }} </strong> </mat-hint>
   </mat-form-field>
 </form>
 <div class="datepicker__dateinput__buttons"> 
-  <button mat-raised-button (click)="toggleCalendar()"> Open Calendar </button>
+  <button class="datepicker_dateinput_buttons_icon" (click)="toggleCalendar()" mat-button="raised">
+    <mat-icon aria-hidden="true">
+      date_range
+    </mat-icon>
+  </button>
   <button [disabled]="!isValidRange || !isValidDate" mat-raised-button (click)="OnApplySelectedDateRange()"> Apply </button>
   </div>
