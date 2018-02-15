@@ -9,13 +9,15 @@ import moment from 'moment-es6';
 })
 export class AppComponent implements OnInit {
 
-  public rangeStart = moment().startOf('year');
+  public rangeStart = moment().startOf('year').toDate();
   public rangeEnd = moment().endOf('day').toDate();
   public startDate = moment().startOf('year').toDate();
   public endDate = moment().toDate();
   public ranges = [];
 
   public ngOnInit() {
+    this.rangeEnd = moment().endOf('day').toDate();
+    this.rangeStart = moment().startOf('year').subtract(3, 'year').toDate();
     for (let i = 0; i < 5; i++) {
       const startDate = new Date('2018-04-07');
       const endDate = new Date('2018-06-07');

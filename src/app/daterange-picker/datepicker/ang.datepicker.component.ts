@@ -255,7 +255,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
       }
     }
     let newDateValid: boolean;
-    newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '()'); // true
+    newDateValid = moment(newDate).isBetween(this.rangeStart, this.rangeEnd, 'month', '[]'); // true
     return newDateValid;
   }
 
