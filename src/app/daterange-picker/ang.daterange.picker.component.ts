@@ -138,6 +138,10 @@ export class DaterangePickerComponent implements OnInit {
     this.isCalendarOpen = !this.isCalendarOpen;
   }
 
+  openCalendar() {
+    this.isCalendarOpen = true;
+  }
+
   closeCalendar() {
     this.isCalendarOpen = false;
   }

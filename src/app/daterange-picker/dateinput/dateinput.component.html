@@ -1,10 +1,11 @@
-<form #calendarForm class="calendar input">
+<form (ngSubmit)="onSubmit()" #calendarForm class="calendar input">
   <mat-form-field>
     <input matInput #startdate (keyup)="updateStartDate(startdate.value)"
                     [value]="startDateFormat"
                     pattern="\d{1,2}\/\d{1,2}\/\d{4}"
                     placeholder="select start date"
                     name="startDateFormat"
+                    (focus)="openCalendar()"
                     >
                     <mat-hint align="start"><strong> {{ dateFormat }} </strong> </mat-hint>
   </mat-form-field>
@@ -14,14 +15,8 @@
                     placeholder="select end date"
                     pattern="\d{1,2}\/\d{1,2}\/\d{4}"
                     name="endDate"
+                    (focus)="openCalendar()"
                     > 
   </mat-form-field>
+  <button class="dateinput_submitbutton" [disabled]="!isValidRange || !isValidDate" mat-raised-button (click)="onSubmit()"> Apply </button>
 </form>
-<div class="datepicker__dateinput__buttons"> 
-  <button class="datepicker_dateinput_buttons_icon" (click)="toggleCalendar()" mat-button="raised">
-    <mat-icon aria-hidden="true">
-      date_range
-    </mat-icon>
-  </button>
-  <button [disabled]="!isValidRange || !isValidDate" mat-raised-button (click)="OnApplySelectedDateRange()"> Apply </button>
-  </div>

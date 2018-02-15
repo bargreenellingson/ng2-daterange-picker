@@ -42,4 +42,7 @@ export class AppComponent implements OnInit {
     this.startDate = $event.startDate;
     this.endDate = $event.endDate;
   }
+  public onApply($event) {
+    console.log($event.startDate, $event.endDate);
+  }
 }

@@ -12,8 +12,14 @@
   }
 }
 
+.dateinput_submitbutton {
+  display: none;
+}
 @media screen and (min-width: 700px) {
   :host {
     flex-direction: row;
+  }
+  .dateinput_submitbutton {
+    display: inline-block;
   }
 }

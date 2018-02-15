@@ -21,6 +21,7 @@ export class DateinputComponent {
   @Output() OnSelectStartDate = new EventEmitter();
   @Output() OnSelectEndDate = new EventEmitter();
   @Output() OnApplyDateRange = new EventEmitter();
+  @Output() OnFocus = new EventEmitter();
   isValidDate = true;
   get startDateFormat() {
     return moment(this.startDate).format(this.dateFormat);
@@ -54,7 +55,11 @@ export class DateinputComponent {
     }
   }
 
-  OnApplySelectedDateRange() {
+  public openCalendar() {
+    this.OnFocus.emit();
+  }
+
+  onSubmit() {
     this.OnApplyDateRange.emit();
   }
 }
