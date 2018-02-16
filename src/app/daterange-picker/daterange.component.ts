@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, Renderer2 } from '@angu
 import { DaterangePickerComponent } from './daterange-picker/ang.daterange.picker.component';
 
 @Component({
-  selector: 'app-daterange',
+  selector: 'app-daterange-picker',
   templateUrl: './daterange.component.html',
   styleUrls: ['./daterange.component.scss']
 })

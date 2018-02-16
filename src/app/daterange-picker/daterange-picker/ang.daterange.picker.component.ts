@@ -12,7 +12,7 @@ import moment from 'moment-es6';
 
 
 @Component({
-  selector: 'app-daterange-picker',
+  selector: 'app-daterange',
   templateUrl: './ang.daterange.picker.component.html',
   styleUrls: ['./ang.daterange.picker.component.scss']
 })

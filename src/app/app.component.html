@@ -1,4 +1,4 @@
-<app-daterange
+<app-daterange-picker
   [startDate]="startDate"
   [endDate]="endDate"
   [dateFormat]="'YYYY/DD/MM'"
@@ -7,11 +7,11 @@
   [dateTest]="dateTest"
   [ranges]="ranges"
   (OnSelectedDaterange)="onApply($event)"
-  ></app-daterange>
+  ></app-daterange-picker>
 
-<app-daterange
+<app-daterange-picker
   [dateFormat]="'YYYY/DD/MM'"
   (OnSelectedDaterange)="onApply($event)"
-  ></app-daterange>
+  ></app-daterange-picker>
 
 <h1> This is some content whoa </h1>
