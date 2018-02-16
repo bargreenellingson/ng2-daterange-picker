@@ -13,8 +13,10 @@ import moment from 'moment-es6';
 export class DateinputComponent {
   @Input() rangeStart: Date;
   @Input() rangeEnd: Date;
-  @Input() startDate: Date;
-  @Input() endDate: Date;
+  @Input() public startDate = new Date();
+  @Output() public startDateChange = new EventEmitter<Date>();
+  @Input() public endDate = new Date();
+  @Output() public endDateChange = new EventEmitter<Date>();
   @Input() isValidRange = true;
   @Input() dateFormat: string;
   @Output() OnToggleCalendar = new EventEmitter();
@@ -23,6 +25,7 @@ export class DateinputComponent {
   @Output() OnApplyDateRange = new EventEmitter();
   @Output() OnFocus = new EventEmitter();
   isValidDate = true;
+
   get startDateFormat() {
     return moment(this.startDate).format(this.dateFormat);
   }
@@ -43,7 +46,7 @@ export class DateinputComponent {
     const tempDate = moment(val, this.dateFormat, true);
     this.isValidDate = tempDate.isValid();
     if (tempDate.isValid()) {
-      this.OnSelectStartDate.emit({date: tempDate.toDate()});
+      this.startDateChange.emit(tempDate.toDate());
     }
   }
 
@@ -51,7 +54,7 @@ export class DateinputComponent {
     const tempDate = moment(val, this.dateFormat, true);
     this.isValidDate = tempDate.isValid();
     if (tempDate.isValid()) {
-      this.OnSelectEndDate.emit({date: tempDate.toDate()});
+      this.endDateChange.emit(tempDate.toDate());
     }
   }
 

@@ -1,27 +1,4 @@
-<app-date-input
-  class="date-input"
-  [startDate]="startDate"
-  [endDate]="endDate"
-  (OnToggleCalendar)="toggleCalendar()"
-  (OnSelectStartDate)="onSelectStartDate($event)"
-  (OnSelectEndDate)="onSelectEndDate($event)"
-  (OnApplyDateRange)="onApplySelectedDateRange()"
-  (OnFocus)="openCalendar()"
-  [(isValidRange)]="isValid"
-  [dateFormat]="dateFormat"
-  >
-
-</app-date-input>
-<ng-container *ngIf="!isCalendarOpen">
-  <p
-    [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
-    *ngFor="let m of msg"> 
-    {{ m }} 
-  </p>
-</ng-container>
-
-<ng-container *ngIf="isCalendarOpen">
-  <div class="datepickerrange">
+<div class="datepickerrange">
     <mat-card >
       <div class="datepickers">
         <div>
@@ -66,9 +43,9 @@
           </p>
         </div>
         <div class="datepickerrange__buttons">
-          <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
+          <button [disabled]="!isValid" mat-button color="primary">Apply
           </button>
-          <button mat-button (click)="toggleCalendar()">Cancel
+          <button mat-button (click)="closeCalendar()">Cancel
           </button>
         </div>
       </div>
@@ -79,4 +56,3 @@
         ></app-predefined-range>
     </mat-card>
   </div>
-</ng-container>

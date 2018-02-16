@@ -18,5 +18,10 @@
                     (focus)="openCalendar()"
                     > 
   </mat-form-field>
-  <button class="dateinput_submitbutton" [disabled]="!isValidRange || !isValidDate" mat-raised-button (click)="onSubmit()"> Apply </button>
+  <button 
+    class="dateinput_submitbutton" 
+    [disabled]="!isValidRange || !isValidDate" 
+    mat-raised-button> 
+      Apply 
+  </button>
 </form>

@@ -1,0 +1,38 @@
+<app-date-input
+  class="date-input"
+  [(startDate)]="startDate"
+  [(endDate)]="endDate"
+  (OnToggleCalendar)="toggleCalendar()"
+  (OnApplyDateRange)="onApply()"
+  (OnFocus)="openCalendar()"
+  [isValidRange]="isValid"
+  [dateFormat]="dateFormat"
+  >
+
+</app-date-input>
+<ng-container *ngIf="!isCalendarOpen">
+  <p
+    [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
+    *ngFor="let m of msg"> 
+    {{ m }} 
+  </p>
+</ng-container>
+
+<ng-container *ngIf="isCalendarOpen">
+  <app-daterange-picker
+    [(startDate)]="startDate"
+    [(endDate)]="endDate"
+    [isValid]="isValid"
+    [msg]="msg"
+    [dateFormat]="'YYYY/DD/MM'"
+    [rangeStart]="rangeStart"
+    [rangeEnd]="rangeEnd"
+    [dateTest]="dateTest"
+    [ranges]="ranges"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    (OnSelectedDaterange)="onApply()"
+    (OnCloseCalendar)="closeCalendar()"
+    >
+  </app-daterange-picker>
+</ng-container>
