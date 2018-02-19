@@ -73,6 +73,9 @@
     position: absolute;
     left: unset;
 		top: unset;
+    height: unset;
+    width: unset;
+    overflow-y: hidden;
 		width: auto;
     .mat-card {
 			height: 310px;

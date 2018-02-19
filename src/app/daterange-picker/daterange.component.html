@@ -23,11 +23,12 @@
 
 <ng-container *ngIf="isCalendarOpen">
   <app-daterange
+    class="daterange"
     [(startDate)]="startDate"
     [(endDate)]="endDate"
     [isValid]="isValid"
     [msg]="msg"
-    [dateFormat]="'YYYY/DD/MM'"
+    [dateFormat]="dateFormat"
     [rangeStart]="rangeStart"
     [rangeEnd]="rangeEnd"
     [dateTest]="dateTest"
