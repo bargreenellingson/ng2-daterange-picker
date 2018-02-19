@@ -83,6 +83,21 @@ Output event which emits an object in this format:
 }
 ```
 
+### Battling Specificity
+
+Give an `id` to the component and style it globally (`calendar` for instance):
+
+```
+#calendar {
+  .date-input--raised {
+    z-index: 1;
+  }
+  .daterange__overlay {
+    z-index: 1;
+  }
+}
+```
+
 # Developing
 
 ## Development server
