@@ -1,4 +1,7 @@
+<div *ngIf="isCalendarOpen" (click)="overlayClicked()" class="daterange__overlay"></div>
+
 <app-date-input
+  [ngClass]="{'date-input--raised': isCalendarOpen}"
   class="date-input"
   [(startDate)]="startDate"
   [(endDate)]="endDate"
@@ -8,8 +11,8 @@
   [isValidRange]="isValid"
   [dateFormat]="dateFormat"
   >
-
 </app-date-input>
+
 <ng-container *ngIf="!isCalendarOpen">
   <p
     [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
@@ -29,9 +32,6 @@
     [rangeEnd]="rangeEnd"
     [dateTest]="dateTest"
     [ranges]="ranges"
-    (OnPanelChange)="onPanelChange($event)"
-    (mouseenter)="onMouseEnter()"
-    (mouseleave)="onMouseLeave()"
     (OnSelectedDaterange)="onApply()"
     (OnCloseCalendar)="closeCalendar()"
     >

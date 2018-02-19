@@ -1,17 +1,19 @@
-<app-daterange-picker
-  [startDate]="startDate"
-  [endDate]="endDate"
-  [dateFormat]="'YYYY/DD/MM'"
-  [rangeStart]="rangeStart"
-  [rangeEnd]="rangeEnd"
-  [dateTest]="dateTest"
-  [ranges]="ranges"
-  (OnSelectedDaterange)="onApply($event)"
-  ></app-daterange-picker>
+<div class="inline">
+  <app-daterange-picker
+    [startDate]="startDate"
+    [endDate]="endDate"
+    [dateFormat]="'YYYY/DD/MM'"
+    [rangeStart]="rangeStart"
+    [rangeEnd]="rangeEnd"
+    [dateTest]="dateTest"
+    [ranges]="ranges"
+    (OnSelectedDaterange)="onApply($event)"
+    ></app-daterange-picker>
 
-<app-daterange-picker
-  [dateFormat]="'YYYY/DD/MM'"
-  (OnSelectedDaterange)="onApply($event)"
-  ></app-daterange-picker>
+    <app-daterange-picker
+      [dateFormat]="'YYYY/DD/MM'"
+      (OnSelectedDaterange)="onApply($event)"
+      ></app-daterange-picker>
 
-<h1> This is some content whoa </h1>
+      <h1> This is some content whoa </h1>
+</div>

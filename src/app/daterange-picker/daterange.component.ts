@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DaterangePickerComponent } from './daterange-picker/ang.daterange.picker.component';
 
 @Component({
@@ -22,8 +22,6 @@ export class DaterangeComponent implements OnInit {
     this._endDate = val;
     this.runDateTest();
   }
-  private _endDate = new Date();
-  private _startDate = new Date();
   @Input() public rangeStart: Date;
   @Input() public rangeEnd: Date;
   @Input() public dateFormat = 'YYYY-MM-DD';
@@ -32,17 +30,11 @@ export class DaterangeComponent implements OnInit {
   @Input() public msg = [];
   @Output() OnSelectedDaterange: EventEmitter<any> = new EventEmitter<any>();
   public isCalendarOpen = false;
-  public isMouseInElement = true;
-  public isPredifinedSelectorOpen = false;
 
-  clickListener: Function;
+  private _endDate = new Date();
+  private _startDate = new Date();
 
-  constructor(private renderer: Renderer2) {
-    this.clickListener = renderer.listen(
-      'document',
-      'click',
-      (event: MouseEvent) => this.handleGlobalClick(event)
-    );
+  constructor() {
   }
 
   ngOnInit() {
@@ -57,7 +49,6 @@ export class DaterangeComponent implements OnInit {
   }
 
   openCalendar() {
-    this.isMouseInElement = true;
     this.isCalendarOpen = true;
   }
 
@@ -65,29 +56,13 @@ export class DaterangeComponent implements OnInit {
     this.isCalendarOpen = false;
   }
 
-  onMouseLeave() {
-    this.isMouseInElement = false;
-  }
-
-  onMouseEnter() {
-    this.isMouseInElement = true;
-  }
-
-  handleGlobalClick(event: MouseEvent): void {
-    // Need to also make sure the predfifined range selector on mobile
-    // isn't open
-    if (!(this.isMouseInElement) && !(this.isPredifinedSelectorOpen)) {
-      this.closeCalendar();
-    }
+  public overlayClicked() {
+    this.closeCalendar();
   }
 
   public onApply() {
     this.closeCalendar();
     this.OnSelectedDaterange.emit({startDate: this.startDate, endDate: this.endDate});
-  }
-
-  onPanelChange(state) {
-    this.isPredifinedSelectorOpen = state;
   }
 
   private runDateTest() {

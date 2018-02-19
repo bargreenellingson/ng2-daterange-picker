@@ -32,7 +32,6 @@ export class DaterangePickerComponent implements OnInit {
   @Input() public msg = [];
   @Output() public msgChange = new EventEmitter();
   @Output() public OnCloseCalendar = new EventEmitter();
-  @Output() public OnPanelChange = new EventEmitter();
   @Output() public OnSelectedDaterange = new EventEmitter();
   private el: ElementRef;
   get startDateText() {
@@ -105,10 +104,6 @@ export class DaterangePickerComponent implements OnInit {
   closeCalendar() {
     this.OnCloseCalendar.emit();
     this.destroyComponentRef();
-  }
-
-  onPanelChange(state) {
-    this.OnPanelChange.emit(state);
   }
 
   getViewContainerDOMSpaceProperty(_viewContainer: ViewContainerRef, _property: string = ''): number {
