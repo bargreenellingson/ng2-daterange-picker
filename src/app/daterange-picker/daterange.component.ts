@@ -33,6 +33,7 @@ export class DaterangeComponent implements OnInit {
   @Output() OnSelectedDaterange: EventEmitter<any> = new EventEmitter<any>();
   public isCalendarOpen = false;
   public isMouseInElement = true;
+  public isPredifinedSelectorOpen = false;
 
   clickListener: Function;
 
@@ -72,9 +73,10 @@ export class DaterangeComponent implements OnInit {
     this.isMouseInElement = true;
   }
 
-  // Not working for some reason
   handleGlobalClick(event: MouseEvent): void {
-    if (!(this.isMouseInElement)) {
+    // Need to also make sure the predfifined range selector on mobile
+    // isn't open
+    if (!(this.isMouseInElement) && !(this.isPredifinedSelectorOpen)) {
       this.closeCalendar();
     }
   }
@@ -82,6 +84,10 @@ export class DaterangeComponent implements OnInit {
   public onApply() {
     this.closeCalendar();
     this.OnSelectedDaterange.emit({startDate: this.startDate, endDate: this.endDate});
+  }
+
+  onPanelChange(state) {
+    this.isPredifinedSelectorOpen = state;
   }
 
   private runDateTest() {

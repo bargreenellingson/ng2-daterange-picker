@@ -8,12 +8,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PredefinedRangeComponent implements OnInit {
   @Input() ranges: Array<{dateStart: Date, dateEnd: Date, name: String}>;
   @Output() OnRangeSelect = new EventEmitter<{dateStart: Date, dateEnd: Date, name: String}>();
+  @Output() OnPanelChange = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
+
   emitDate(range) {
     this.OnRangeSelect.emit(range);
+  }
+
+  onPanelChange(state) {
+    this.OnPanelChange.emit(state);
   }
 
 }

@@ -5,7 +5,7 @@
 </div>
 
 <div class="predefinedrange__selector">
-  <mat-select placeholder="Predefined Range"> 
+  <mat-select (onOpen)="onPanelChange(true)" (onClose)="onPanelChange(false)" placeholder="Predefined Range"> 
     <mat-option (click)="emitDate(range)" *ngFor="let range of ranges" [value]="range">
       {{ range.name }}
     </mat-option>

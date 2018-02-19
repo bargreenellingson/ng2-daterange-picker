@@ -43,7 +43,7 @@
           </p>
         </div>
         <div class="datepickerrange__buttons">
-          <button [disabled]="!isValid" mat-button color="primary">Apply
+          <button [disabled]="!isValid" mat-button color="primary" (click)="onApplySelectedDateRange()">Apply
           </button>
           <button mat-button (click)="closeCalendar()">Cancel
           </button>
@@ -51,6 +51,7 @@
       </div>
       <app-predefined-range 
         class="predefinedrange"
+        (OnPanelChange)="onPanelChange($event)"
         [ranges]="ranges"
         (OnRangeSelect)="OnPredefinedRangeSelect($event)"
         ></app-predefined-range>
