@@ -23,6 +23,9 @@ export class AppComponent implements OnInit {
       const endDate = new Date('2018-06-07');
       this.ranges.push({dateStart: startDate, dateEnd: endDate, name: 'Test test test'});
     }
+      const startDate = new Date();
+      const endDate = new Date();
+      this.ranges.push({dateStart: startDate, dateEnd: endDate, name: 'works'});
   }
   public dateTest(startDate, endDate): Array<String> {
     const errorArray = [];

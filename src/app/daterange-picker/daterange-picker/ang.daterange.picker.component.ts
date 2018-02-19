@@ -33,6 +33,7 @@ export class DaterangePickerComponent implements OnInit {
   @Output() public msgChange = new EventEmitter();
   @Output() public OnCloseCalendar = new EventEmitter();
   @Output() public OnPanelChange = new EventEmitter();
+  @Output() public OnSelectedDaterange = new EventEmitter();
   private el: ElementRef;
   get startDateText() {
     return moment(this.startDate).format(this.dateFormat);
@@ -42,8 +43,6 @@ export class DaterangePickerComponent implements OnInit {
   }
   private selfComponentRef: ComponentRef<any>;
 
-  @Output() OnCloseDaterangePicker: EventEmitter<any> = new EventEmitter<any>();
-  @Output() OnSelectedDaterange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(_el: ElementRef) {
     this.el = _el;
@@ -84,12 +83,6 @@ export class DaterangePickerComponent implements OnInit {
 
   onApplySelectedDateRange() {
     this.OnSelectedDaterange.emit({startDate: this.startDate, endDate: this.endDate});
-    this.destroyComponentRef();
-  }
-
-  onCloseContextualMenu() {
-    this.OnCloseDaterangePicker.emit();
-    this.destroyComponentRef();
   }
 
   destroyComponentRef() {
@@ -100,14 +93,18 @@ export class DaterangePickerComponent implements OnInit {
     this.selfComponentRef = _componentRef;
   }
 
+  // It is possible to have a predfined range
+  // Which isn't valid!
   OnPredefinedRangeSelect($event) {
-    this.startDate = $event.dateStart;
-    this.endDate = $event.dateEnd;
+    this.onSelectStartDate({date: $event.dateStart});
+    this.onSelectEndDate({date: $event.dateEnd});
     this.onApplySelectedDateRange();
+    this.closeCalendar();
   }
 
   closeCalendar() {
     this.OnCloseCalendar.emit();
+    this.destroyComponentRef();
   }
 
   onPanelChange(state) {
