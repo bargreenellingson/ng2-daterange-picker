@@ -1,6 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+$datepicker-breakpoint: 1020px;
+$datepicker-black: red ;
+$datepicker-white: blue;
+$datepicker-disabled: green;
+$datepicker-chevron: lime;
+$datepicker-invalid: navy;
+$datepicker-valid: brown;
+$datepicker-chosen-day: pink;
 .inline {
-  display: inline-flex;
+  display: flex;
 }
+@import "./calendar_theme"

@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ng2-daterange-picker-bfork",
-  "version": "0.0.45b",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib": "ng-packagr -p ./package.json"
+    "build:lib": "ng-packagr -p ./package.json && cp src/calendar_theme.scss ./dist && node-sass src/calendar_theme.scss -o ./dist/"
   },
   "private": false,
   "dependencies": {

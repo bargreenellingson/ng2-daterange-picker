@@ -8,6 +8,8 @@ Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-datera
 
 ## Using the component
 
+### Template format
+
 ```
 <!-- Calendar with all the features -->
 <app-daterange-picker
@@ -27,6 +29,44 @@ Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-datera
   (OnSelectedDaterange)="onApply($event)"
   ></app-daterange-picker>
 ```
+
+### Add Styles
+
+#### CSS
+
+Add this line to your global styles:
+
+`@import "~ng2-daterange-picker-bfork/calendar_theme.css";`
+
+#### SCSS
+
+Add this line to your global styles:
+
+`@import "~ng2-daterange-picker-bfork/calendar_theme";`
+
+And you can change the following variables:
+
+```
+/* A very ugly theme: */
+
+// Important variables!
+$layer-1: 10; // This is what the clickable overlay will be set
+$layer-2: 20; // The datepicker
+$datepicker-breakpoint: 1020px; // When the calendar uses mobile layout
+
+// Colors
+$datepicker-black: red ;
+$datepicker-white: blue;
+$datepicker-disabled: green;
+$datepicker-chevron: lime;
+$datepicker-invalid: navy;
+$datepicker-valid: brown;
+$datepicker-chosen-day: pink;
+```
+
+#### Other CSS preprocessors...
+
+Submit a pull request!
 
 ### dateFormat
 

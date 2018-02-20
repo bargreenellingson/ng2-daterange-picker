@@ -4,7 +4,7 @@ import { DaterangePickerComponent } from './daterange-picker/ang.daterange.picke
 @Component({
   selector: 'app-daterange-picker',
   templateUrl: './daterange.component.html',
-  styleUrls: ['./daterange.component.scss']
+  styleUrls: []
 })
 export class DaterangeComponent implements OnInit {
 

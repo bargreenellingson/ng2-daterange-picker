@@ -14,7 +14,7 @@ import moment from 'moment-es6';
 @Component({
   selector: 'app-daterange',
   templateUrl: './ang.daterange.picker.component.html',
-  styleUrls: ['./ang.daterange.picker.component.scss']
+  styleUrls: []
 })
 export class DaterangePickerComponent implements OnInit {
 

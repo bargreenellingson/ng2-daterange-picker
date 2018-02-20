@@ -8,7 +8,7 @@ import moment from 'moment-es6';
 @Component({
   selector: 'app-date-input',
   templateUrl: './dateinput.component.html',
-  styleUrls: ['./dateinput.component.scss']
+  styleUrls: []
 })
 export class DateinputComponent {
   @Input() rangeStart: Date;

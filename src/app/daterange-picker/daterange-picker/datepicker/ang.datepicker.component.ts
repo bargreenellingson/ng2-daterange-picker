@@ -32,7 +32,7 @@ interface ValidationResult {
     ])
   ],
   templateUrl: './ang.datepicker.component.html',
-  styleUrls: ['./ang.datepicker.component.scss']
+  styleUrls: []
 })
 export class DatePickerComponent implements OnInit, OnChanges {
 
