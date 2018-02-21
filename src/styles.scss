@@ -1,5 +1,4 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-$datepicker-breakpoint: 1020px;
 $datepicker-black: red ;
 $datepicker-white: blue;
 $datepicker-disabled: green;
@@ -10,4 +9,9 @@ $datepicker-chosen-day: pink;
 .inline {
   display: flex;
 }
-@import "./calendar_theme"
+
+@import "./calendar_theme";
+
+body {
+  background-color: gray;
+}

@@ -1,13 +1,15 @@
-<div class="predefinedrange__buttons">
-  <ng-container *ngFor="let range of ranges">
-    <button color="primary" mat-button (click)="emitDate(range)"> {{ range.name }} </button>
-  </ng-container>
-</div>
+<ng-container *ngIf="ranges.length > 0">
+  <div class="predefinedrange__buttons">
+    <ng-container *ngFor="let range of ranges">
+      <button color="primary" mat-button (click)="emitDate(range)"> {{ range.name }} </button>
+    </ng-container>
+  </div>
 
-<div class="predefinedrange__selector">
-  <mat-select placeholder="Predefined Range"> 
-    <mat-option (click)="emitDate(range)" *ngFor="let range of ranges" [value]="range">
-      {{ range.name }}
-    </mat-option>
-  </mat-select>
-</div>
+  <div class="predefinedrange__selector">
+    <mat-select placeholder="Predefined Range"> 
+      <mat-option (click)="emitDate(range)" *ngFor="let range of ranges" [value]="range">
+        {{ range.name }}
+      </mat-option>
+    </mat-select>
+  </div>
+</ng-container>
