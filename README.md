@@ -52,7 +52,11 @@ And you can change the following variables:
 // Important variables!
 $datepicker-layer-1: 10; // This is what the clickable overlay will be set
 $datepicker-layer-2: 20; // The datepicker
-$datepicker-breakpoint: 1020px; // When the calendar uses mobile layout
+
+// Breakpoints
+$datepicker-breakpoint-desktop: 1020px;
+$datepicker-breakpoint-tablet: 1020px;
+
 
 // Colors
 $datepicker-black: red ;
