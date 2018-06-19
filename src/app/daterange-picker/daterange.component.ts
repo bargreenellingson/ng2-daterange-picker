@@ -25,6 +25,7 @@ export class DaterangeComponent implements OnInit {
   @Input() public rangeStart: Date;
   @Input() public rangeEnd: Date;
   @Input() public dateFormat = 'YYYY-MM-DD';
+  @Input() public showApplyButton = true;
   @Input() ranges: Array<{dateStart: Date, dateEnd: Date, name: String}>;
   @Input() public isValid = true;
   @Input() public msg = [];

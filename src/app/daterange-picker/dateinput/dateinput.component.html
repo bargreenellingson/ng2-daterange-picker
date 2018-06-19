@@ -16,12 +16,12 @@
                     pattern="\d{1,2}\/\d{1,2}\/\d{4}"
                     name="endDate"
                     (focus)="openCalendar()"
-                    > 
+                    >
   </mat-form-field>
-  <button 
-    class="dateinput_submitbutton" 
-    [disabled]="!isValidRange || !isValidDate" 
-    mat-raised-button> 
-      Apply 
+  <button *ngIf="showApplyButton"
+    class="dateinput_submitbutton"
+    [disabled]="!isValidRange || !isValidDate"
+    mat-raised-button>
+      Apply
   </button>
 </form>

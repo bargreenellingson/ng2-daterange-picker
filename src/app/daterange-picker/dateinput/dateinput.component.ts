@@ -19,6 +19,7 @@ export class DateinputComponent {
   @Output() public endDateChange = new EventEmitter<Date>();
   @Input() isValidRange = true;
   @Input() dateFormat: string;
+  @Input() showApplyButton: boolean;
   @Output() OnToggleCalendar = new EventEmitter();
   @Output() OnSelectStartDate = new EventEmitter();
   @Output() OnSelectEndDate = new EventEmitter();

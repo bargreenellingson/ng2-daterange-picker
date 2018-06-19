@@ -10,14 +10,15 @@
   (OnFocus)="openCalendar()"
   [isValidRange]="isValid"
   [dateFormat]="dateFormat"
+  [showApplyButton]="showApplyButton"
   >
 </app-date-input>
 
 <ng-container *ngIf="!isCalendarOpen">
   <p
     [ngClass]="{ 'datepickerrange_msg--warn': !isValid }"
-    *ngFor="let m of msg"> 
-    {{ m }} 
+    *ngFor="let m of msg">
+    {{ m }}
   </p>
 </ng-container>
 
