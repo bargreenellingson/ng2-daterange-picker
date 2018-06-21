@@ -20,7 +20,7 @@ Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-datera
   [rangeEnd]="rangeEnd"
   [dateTest]="dateTest"
   [ranges]="ranges"
-  [showApplyButton]="false"
+  [showApplyButton]="showApplyButton"
   (OnSelectedDaterange)="onApply($event)"
   ></app-daterange-picker>
 
