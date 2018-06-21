@@ -20,6 +20,7 @@ Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-datera
   [rangeEnd]="rangeEnd"
   [dateTest]="dateTest"
   [ranges]="ranges"
+  [showApplyButton]="false"
   (OnSelectedDaterange)="onApply($event)"
   ></app-daterange-picker>
 
@@ -80,7 +81,7 @@ Submit a pull request!
 
 Only allow input dates from a specified range (i.e. dates between January 1st, 2017 to January 1st, 2018).
 
-### ranges 
+### ranges
 
 Set of predefined ranges. Accepts an `array` of `objects`. Use the following format:
 
@@ -99,7 +100,7 @@ Set of predefined ranges. Accepts an `array` of `objects`. Use the following for
 `dateTest` used to test the validity of a date. Here is an example function
 which makes sure the start date doesn't come before the end date:
 
-``` 
+```
   public dateTest(startDate, endDate): Array<String> {
     const errorArray = [];
     if (endDate.valueOf() < startDate.valueOf()) {
@@ -118,12 +119,12 @@ which makes sure the start date doesn't come before the end date:
 
 ### OnSelectedDaterange
 
-Output event which emits an object in this format: 
+Output event which emits an object in this format:
 
 ```
 {
   startDate: <Date>,
-  endDate: <Date> 
+  endDate: <Date>
 }
 ```
 
