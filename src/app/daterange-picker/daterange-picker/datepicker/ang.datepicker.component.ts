@@ -1,7 +1,9 @@
 import {
-  animate, Component, ElementRef, EventEmitter, Input, keyframes, OnChanges,
-  OnInit, Output, SimpleChange, state, style, transition, trigger
+  Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 } from '@angular/core';
+import {
+  animate, keyframes, style, transition, trigger
+} from '@angular/animations';
 import { Calendar } from './ang.calendar';
 import moment from 'moment-es6';
 
