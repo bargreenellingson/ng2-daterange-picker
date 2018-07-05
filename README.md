@@ -6,6 +6,8 @@
 
 Forked with :heart: from [albertnadal](https://github.com/albertnadal/ng2-daterange-picker)
 
+:warning: If you're using angular 5 use version 1.x, 2.x uses angular 6 :warning:
+
 ## Using the component
 
 ### Template format
