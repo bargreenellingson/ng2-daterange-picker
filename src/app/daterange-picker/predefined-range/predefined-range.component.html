@@ -1,4 +1,4 @@
-<ng-container *ngIf="ranges.length > 0">
+<ng-container *ngIf="ranges && ranges.length > 0">
   <div class="predefinedrange__buttons">
     <ng-container *ngFor="let range of ranges">
       <button color="primary" mat-button (click)="emitDate(range)"> {{ range.name }} </button>
