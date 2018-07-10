@@ -130,6 +130,17 @@ Output event which emits an object in this format:
 }
 ```
 
+### OnDaterangeChange
+
+Output event for when user alters the date range which emits an object in this format:
+
+```
+{
+  startDate: <Date>,
+  endDate: <Date>
+}
+```
+
 ### Battling Specificity
 
 Give an `id` to the component and style it globally (`calendar` for instance):

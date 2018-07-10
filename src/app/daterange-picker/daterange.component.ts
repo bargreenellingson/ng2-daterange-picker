@@ -30,6 +30,8 @@ export class DaterangeComponent implements OnInit {
   @Input() public isValid = true;
   @Input() public msg = [];
   @Output() OnSelectedDaterange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() OnDaterangeChange: EventEmitter<any> = new EventEmitter<any>();
+
   public isCalendarOpen = false;
 
   private _endDate = new Date();
@@ -57,13 +59,27 @@ export class DaterangeComponent implements OnInit {
     this.isCalendarOpen = false;
   }
 
-  public overlayClicked() {
+  overlayClicked() {
     this.closeCalendar();
   }
 
-  public onApply() {
+  onStartDateChange(startDate: Date) {
+    this.startDate = startDate;
+    this.emitDaterangeChange();
+  }
+
+  onEndDateChange(endDate: Date) {
+    this.endDate = endDate;
+    this.emitDaterangeChange();
+  }
+
+  emitDaterangeChange() {
+    this.OnDaterangeChange.emit({ startDate: this.startDate, endDate: this.endDate });
+  }
+
+  onApply() {
     this.closeCalendar();
-    this.OnSelectedDaterange.emit({startDate: this.startDate, endDate: this.endDate});
+    this.OnSelectedDaterange.emit({ startDate: this.startDate, endDate: this.endDate });
   }
 
   private runDateTest() {
