@@ -25,8 +25,10 @@
 <ng-container *ngIf="isCalendarOpen">
   <app-daterange
     class="daterange"
-    [(startDate)]="startDate"
-    [(endDate)]="endDate"
+    [startDate]="startDate"
+    (startDateChange)="onStartDateChange($event)"
+    [endDate]="endDate"
+    (endDateChange)="onEndDateChange($event)"
     [isValid]="isValid"
     [msg]="msg"
     [dateFormat]="dateFormat"
