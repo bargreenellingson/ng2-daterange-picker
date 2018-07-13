@@ -344,11 +344,14 @@ $datepicker-layer-2: 20 !default;
   text-align: center;
 }
 
+$button-height: 40px;
+
 .datepickerrange__buttons {
   display: flex;
   justify-content: space-between;
+  min-height: $button-height;
   button {
-    height: 40px;
+    height: $button-height;
   }
 }
 
