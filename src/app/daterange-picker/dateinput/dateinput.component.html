@@ -7,7 +7,7 @@
                     name="startDateFormat"
                     (focus)="openCalendar()"
                     >
-                    <mat-hint align="start"><strong> {{ dateFormat }} </strong> </mat-hint>
+                    <mat-hint align="start"><strong> {{ hintDateFormat }} </strong> </mat-hint>
   </mat-form-field>
   <mat-form-field>
     <input matInput #enddate (keyup)="updateEndDate(enddate.value)"

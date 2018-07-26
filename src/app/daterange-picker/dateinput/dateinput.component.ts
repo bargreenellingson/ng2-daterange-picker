@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ngOnInit } from '@angular/core';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -10,7 +10,7 @@ import moment from 'moment-es6';
   templateUrl: './dateinput.component.html',
   styleUrls: []
 })
-export class DateinputComponent {
+export class DateinputComponent implements OnInit {
   @Input() rangeStart: Date;
   @Input() rangeEnd: Date;
   @Input() public startDate = new Date();
@@ -25,6 +25,7 @@ export class DateinputComponent {
   @Output() OnSelectEndDate = new EventEmitter();
   @Output() OnApplyDateRange = new EventEmitter();
   @Output() OnFocus = new EventEmitter();
+  hintDateFormat: string;
   isValidDate = true;
 
   get startDateFormat() {
@@ -38,6 +39,15 @@ export class DateinputComponent {
   public errorMessages = [];
 
   constructor () { }
+
+  public ngOnInit () {
+    if (this.dateFormat[0].toUpperCase() == "L") {  // Set up hint for localized formats
+      moment.locale(navigator.language);
+      this.hintDateFormat = moment.localeData().longDateFormat(this.dateFormat);
+    }  else {
+      this.hintDateFormat = this.dateFormat;
+    }
+  }
 
   public toggleCalendar() {
     this.OnToggleCalendar.emit();
